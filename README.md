@@ -154,14 +154,6 @@ At startup the robot:
 
 ---
 
-## 👨‍💻 Author
-
-**Your Name**
-
-Embedded Systems & Robotics Student
-
----
-
 ## ⭐ If you like this project
 
 Give it a ⭐ on GitHub!

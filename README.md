@@ -1,42 +1,167 @@
-# Autonomous-Line-Following-Robot-with-Color-Based-Routing
-STM32-based autonomous line-following robot with PID control, automatic sensor calibration, and color-based navigation using TCS3200 sensor.
+# 🤖 STM32 Autonomous Line Following Robot
 
+An autonomous mobile robot developed using **STM32 microcontroller**, capable of **line tracking**, **automatic sensor calibration**, and **color-based navigation** using a TCS3200 color sensor.
 
+---
 
-📌 Project Overview
+## 📷 Robot Overview
 
-This project implements an autonomous line-following robot using an STM32 microcontroller.
-The robot is capable of:
+<p align="center">
+  <img src="images/robot.jpg" width="450"/>
+</p>
 
-- Following a line using PID control
-- Automatically calibrating line sensors
-- Detecting a loading station
-- Reading package color using a TCS3200 color sensor
-- Choosing navigation direction based on detected color
-- Reaching a final destination autonomously
-The system is designed as a state-machine-based autonomous robot suitable for robotics competitions or embedded systems learning.
+---
 
-⚙️ Hardware Components
-- STM32 MCU
-- 5-channel TCRT5000 (ADC + DMA)
-- Dual DC Motors JGB37-520 12v 333rpm
-- Motor Driver TB6612FNG
-- Quadrature Encoders
-- TCS3200 Color Sensor
-- Buck Converter 12VDC - 5V and 3.3V
+## 🧠 System Features
 
-System Architecture
+✅ PID Line Following Control
+✅ 5-Channel Analog Line Sensor TCRT5000
+✅ Automatic Sensor Calibration
+✅ Color Detection (TCS3200)
+✅ State Machine Navigation
+✅ Branch Decision Based on Package Color
+✅ STM32 HAL Driver Implementation
 
-The robot operates using a Finite State Machine (FSM):
+---
 
+## ⚙️ Hardware Components
+
+| Component    | Description           |
+| ------------ | --------------------- |
+| MCU          | STM32F103C8T6         |
+| Motor Driver | Tb6612FNG             |
+| Sensors      | TCRT5000              |
+| Color Sensor | TCS3200               |
+| Motors       | JGB37-520 12v 333rpm  |
+| Power        | Li-ion Battery Pack   |
+
+---
+
+## 🧩 System Architecture
+
+<p align="center">
+  <img src="images/Prj_Schematic.png" width="650"/>
+</p>
+
+---
+
+## 🔄 Robot State Machine
+
+```
 START
-   ↓
-GO_TO_STATION
-   ↓
-READ_COLOR
-   ↓
-ESCAPE_STATION
-   ↓
-GO_TO_FINISH
-   ↓
-FINISHED
+  ↓
+Go To Station
+  ↓
+Read Package Color
+  ↓
+Escape Station
+  ↓
+Follow Line + Branch Decision
+  ↓
+Finish
+```
+
+---
+
+## 🎯 Control Algorithm
+
+### Line Position Error
+
+Weighted sensor method:
+
+* Left → Negative Error
+* Center → Zero Error
+* Right → Positive Error
+
+### PID Controller
+
+```
+PID = Kp * Error + Ki * Integral + Kd * Derivative
+```
+
+Used to dynamically adjust left/right motor speeds.
+
+---
+
+## 🎨 Color Detection Logic
+
+TCS3200 sensor measures frequency response:
+
+* RED filter measurement
+* BLUE filter measurement
+* Multiple sampling for reliability
+* Majority voting color decision
+
+Robot behavior:
+
+* 🔴 Red Package → Turn Left
+* 🔵 Blue Package → Turn Right
+
+---
+
+## 🧪 Automatic Calibration
+
+At startup the robot:
+
+1. Spins in place
+2. Records sensor MIN/MAX values
+3. Normalizes readings for robust tracking
+
+---
+
+## 📁 Project Structure
+
+```
+├── Core/
+│   └── Src/
+│       └── main.c
+├── Drivers/
+├── images/
+│   ├── robot.jpg
+│   ├── demo.gif
+│   └── system_diagram.png
+└── README.md
+```
+
+---
+
+## 🛠️ Software Stack
+
+* STM32CubeIDE
+* STM32 HAL Library
+* Embedded C
+* DMA + Timer + ADC
+* PWM Motor Control
+
+---
+
+## ▶️ Getting Started
+
+1. Clone repository
+2. Open project in STM32CubeIDE
+3. Build project
+4. Flash firmware to STM32 board
+5. Power robot and run 🚀
+
+---
+
+## 📈 Future Improvements
+
+* Velocity PID control using encoder feedback
+* Dynamic speed adjustment
+* Obstacle detection
+* ROS integration
+
+---
+
+## 👨‍💻 Author
+
+**Your Name**
+
+Embedded Systems & Robotics Student
+
+---
+
+## ⭐ If you like this project
+
+Give it a ⭐ on GitHub!

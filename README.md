@@ -7,7 +7,7 @@ An autonomous mobile robot developed using **STM32 microcontroller**, capable of
 ## 📷 Robot Overview
 
 <p align="center">
-  <img src="images/robot.png" width="450"/>
+  <img src="./robot.png" width="450">
 </p>
 
 ---
@@ -40,7 +40,7 @@ An autonomous mobile robot developed using **STM32 microcontroller**, capable of
 ## 🧩 System Architecture
 
 <p align="center">
-  <img src="images/Prj_Schematic.png" width="650"/>
+  <img src="Prj_Schematic.png" width="650"/>
 </p>
 
 ---

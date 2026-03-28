@@ -40,7 +40,7 @@ An autonomous mobile robot developed using **STM32 microcontroller**, capable of
 ## 🧩 System Architecture
 
 <p align="center">
-  <img src="Prj_Schematic.png" width="650"/>
+  <img src="Prj_Sche.png" width="650"/>
 </p>
 
 ---
